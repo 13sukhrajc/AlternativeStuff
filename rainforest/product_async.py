@@ -1,13 +1,18 @@
-from .client import rainforest_request
+import httpx
+from .client import BASE_URL, API_KEY
 
-def get_product_details(asin, domain="amazon.com"):
+async def get_product_details_async(client, asin, domain="amazon.com"):
     params = {
         "type": "product",
         "amazon_domain": domain,
-        "asin": asin
+        "asin": asin,
+        "api_key": API_KEY
     }
 
-    data = rainforest_request(params)
+    r = await client.get(BASE_URL, params=params)
+    r.raise_for_status()
+    data = r.json()
+
     product = data.get("product", {})
 
     return {
