@@ -1,108 +1,24 @@
-from dotenv import load_dotenv
-load_dotenv()
-
-from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import List
-import os
+import ast
 import json
+from pprint import pprint
 
-from groq import Groq
+from ai.substitutes import generate_substitutes
+from pipeline.enhancer import enhance_substitutes
 
-# -------------------------
-# Groq Configuration
-# -------------------------
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-if not GROQ_API_KEY:
-    raise RuntimeError("Missing GROQ_API_KEY environment variable")
+def run(query):
+    # Step 1: Generate original product + substitute titles
+    base_data = generate_substitutes(query)
 
-client = Groq(api_key=GROQ_API_KEY)
+    # Step 2: Enhance substitutes with ASIN + affiliate links
+    final_output = enhance_substitutes(base_data)
 
-app = FastAPI()
-
-# -------------------------
-# Request Schemas
-# -------------------------
-class ProductRequest(BaseModel):
-    product_url: str
-
-class SubstituteResponse(BaseModel):
-    original_product: dict
-    substitutes: List[dict]
-
-# -------------------------
-# Groq Helper Functions
-# -------------------------
-
-async def call_groq_extract(url: str) -> dict:
-    prompt = f"""
-    Extract structured product data from this product page URL.
-
-    Return ONLY valid JSON with:
-    - title (string)
-    - price (float)
-    - category (string)
-    - features (object)
-    - short_description (string)
-
-    URL: {url}
-    """
-
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": prompt}]
-    )
-
-    text = response.choices[0].message.content.strip()
-
-    if text.startswith("```"):
-        text = text.strip("`").strip()
-
-    try:
-        data = json.loads(text)
-        data["price"] = float(data["price"])
-        return data
-    except Exception:
-        raise RuntimeError(f"Groq returned invalid JSON: {text}")
+    print(final_output)
 
 
-async def call_groq_substitutes(product_data: dict) -> List[dict]:
-    prompt = f"""
-    Recommend 3 cheaper alternative products for this item:
+if __name__ == "__main__":
+    # run("ps5 slim")
+    data = "{'original_product': {'title': 'ps5 slim', 'asin': 'B0FRSZT2H5', 'price': 399, 'affiliate_link': 'https://www.amazon.com/dp/B0FRSZT2H5/?tag=buybuzz02b-20'}, 'substitutes': [{'title': 'PlayStation 5', 'asin': 'B0FRGTYSL5', 'price': 549, 'affiliate_link': 'https://www.amazon.com/dp/B0FRGTYSL5/?tag=buybuzz02b-20'}, {'title': 'PlayStation 5 Digital Edition', 'asin': 'B0FRSZT2H5', 'price': 399, 'affiliate_link': 'https://www.amazon.com/dp/B0FRSZT2H5/?tag=buybuzz02b-20'}, {'title': 'Xbox Series S', 'asin': 'B0D932YWSZ', 'price': 392.73, 'affiliate_link': 'https://www.amazon.com/dp/B0D932YWSZ/?tag=buybuzz02b-20'}, {'title': 'Nintendo Switch', 'asin': 'B0BFJWCYTL', 'price': 324.64, 'affiliate_link': 'https://www.amazon.com/dp/B0BFJWCYTL/?tag=buybuzz02b-20'}, {'title': 'Xbox Series X', 'asin': 'B08H75RTZ8', 'price': 574.99, 'affiliate_link': 'https://www.amazon.com/dp/B08H75RTZ8/?tag=buybuzz02b-20'}]}"
 
-    {json.dumps(product_data, indent=2)}
-
-    Return ONLY a JSON array of objects with:
-    - title
-    - price
-    - url
-    """
-
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[{"role": "user", "content": prompt}]
-    )
-
-    text = response.choices[0].message.content.strip()
-
-    if text.startswith("```"):
-        text = text.strip("`").strip()
-
-    try:
-        return json.loads(text)
-    except Exception:
-        return []
-
-# -------------------------
-# Endpoint
-# -------------------------
-
-@app.post("/find-substitute", response_model=SubstituteResponse)
-async def find_substitute(req: ProductRequest):
-    product_data = await call_groq_extract(req.product_url)
-    substitutes = await call_groq_substitutes(product_data)
-
-    return {
-        "original_product": product_data,
-        "substitutes": substitutes
-    }
+    data_dict = ast.literal_eval(data)
+    cheapest = min(data_dict["substitutes"], key=lambda x: x["price"])
+    print(cheapest["affiliate_link"])
