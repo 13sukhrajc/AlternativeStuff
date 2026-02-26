@@ -1,56 +1,68 @@
 import asyncio
 import httpx
+
 from rainforest.search_async import get_asin_from_title_async
 from rainforest.product_async import get_product_details_async
+
+from walmart.search_async import walmart_search_async
+from walmart.product_async import walmart_product_async
+
+from bestbuy.search_async import bestbuy_search_async
+from bestbuy.product_async import bestbuy_product_async
+
+from pipeline.schema import build_product_entry
 from utils.affiliate import build_affiliate_link
 
 
-async def enhance_substitutes_async(data):
+async def enhance_substitutes_async(data, domain="amazon.com"):
     original_title = data["original_product"]["title"]
 
     async with httpx.AsyncClient(timeout=20) as client:
 
-        # --- ORIGINAL PRODUCT ---
-        original_asin_task = get_asin_from_title_async(client, original_title)
+        # Amazon ASIN lookup
+        amazon_asin = await get_asin_from_title_async(client, original_title, domain)
 
-        # substitute ASIN tasks
-        asin_tasks = [
-            get_asin_from_title_async(client, item["title"])
-            for item in data["substitutes"]
-        ]
+        # Amazon product details
+        amazon_details = await get_product_details_async(client, amazon_asin, domain)
 
-        # run all ASIN lookups in parallel
-        original_asin, *substitute_asins = await asyncio.gather(
-            original_asin_task, *asin_tasks
+        # Walmart + Best Buy lookups
+        walmart_id = await walmart_search_async(client, original_title)
+        bestbuy_id = await bestbuy_search_async(client, original_title)
+
+        walmart_details = (
+            await walmart_product_async(client, walmart_id)
+            if walmart_id else None
         )
 
-        # product detail tasks
-        detail_tasks = [
-            get_product_details_async(client, asin)
-            for asin in [original_asin] + substitute_asins
-        ]
+        bestbuy_details = (
+            await bestbuy_product_async(client, bestbuy_id)
+            if bestbuy_id else None
+        )
 
-        details = await asyncio.gather(*detail_tasks)
+    merchants = []
 
-    original_details = details[0]
-    substitute_details = details[1:]
+    # Amazon
+    merchants.append({
+        "merchant": "Amazon",
+        "id": amazon_asin,
+        "price": amazon_details.get("price"),
+        "stock": amazon_details.get("is_in_stock"),
+        "affiliate_link": build_affiliate_link(amazon_asin, domain)
+    })
 
-    return {
-        "original_product": {
-            "title": original_title,
-            "asin": original_asin,
-            "price": original_details.get("price"),
-            "affiliate_link": build_affiliate_link(original_asin)
-        },
-        "substitutes": [
-            {
-                "title": item["title"],
-                "asin": asin,
-                "price": detail.get("price"),
-                "affiliate_link": build_affiliate_link(asin)
-            }
-            for item, asin, detail in zip(
-                data["substitutes"], substitute_asins, substitute_details
-            )
-        ]
-    }
+    # Walmart
+    if walmart_details:
+        merchants.append(walmart_details)
+
+    # Best Buy
+    if bestbuy_details:
+        merchants.append(bestbuy_details)
+
+    # Unified product entry
+    product = build_product_entry(
+        title=original_title,
+        image=amazon_details.get("images")[0] if amazon_details.get("images") else None,
+        merchants=merchants
+    )
+
+    return {"products": [product]}

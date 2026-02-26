@@ -1,4 +1,5 @@
 import httpx
+import re
 from .client import BASE_URL, API_KEY
 
 async def get_product_details_async(client, asin, domain="amazon.com"):
@@ -14,10 +15,24 @@ async def get_product_details_async(client, asin, domain="amazon.com"):
     data = r.json()
 
     product = data.get("product", {})
+    buybox = product.get("buybox_winner", {})
+
+    # Raw availability text
+    availability_raw = buybox.get("availability", {}).get("raw", "")
+    availability_msg = buybox.get("availability_message", "")
+    is_in_stock = buybox.get("is_in_stock", None)
+
+    # Extract "Only X left" if present
+    stock_left = None
+    match = re.search(r"Only (\d+) left", availability_raw)
+    if match:
+        stock_left = int(match.group(1))
 
     return {
         "title": product.get("title"),
-        "price": product.get("buybox_winner", {}).get("price", {}).get("value"),
-        "stock": product.get("buybox_winner", {}).get("availability", {}).get("raw"),
+        "price": buybox.get("price", {}).get("value"),
+        "stock_raw": availability_raw or availability_msg,
+        "stock_left": stock_left,
+        "is_in_stock": is_in_stock,
         "images": product.get("images", [])
     }
