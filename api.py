@@ -2,6 +2,8 @@
 # Run with: python -m uvicorn api:app --reload
 
 import re
+import requests
+from urllib.parse import urlparse
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -21,7 +23,6 @@ app.add_middleware(
 
 # ---------------------------------------------------------------------------
 # Region → Amazon domain mapping
-# Add new regions here when expanding internationally
 # ---------------------------------------------------------------------------
 REGION_DOMAINS = {
     "CA": "amazon.ca",
@@ -31,16 +32,9 @@ REGION_DOMAINS = {
     # "DE": "amazon.de",
     # "AU": "amazon.com.au",
     # "JP": "amazon.co.jp",
-    # "FR": "amazon.fr",
-    # "IT": "amazon.it",
-    # "ES": "amazon.es",
-    # "MX": "amazon.com.mx",
-    # "IN": "amazon.in",
 }
 
-# How many extra substitutes to request from the AI per slot, to account
-# for products that come back with no price (group buys, out of stock, etc.)
-# e.g. user wants 1 budget → AI is asked for 2 budget candidates
+# How many extra substitutes to request from the AI per slot
 PADDING_MULTIPLIER = 2
 
 
@@ -55,9 +49,39 @@ class SearchRequest(BaseModel):
     count_next_gen: int = 1
 
 
-def extract_asin(query: str):
-    match = re.search(r'/dp/([A-Z0-9]{10})', query)
+def resolve_url(url: str) -> str:
+    """Follows redirects on shortened URLs like amzn.to to get the full URL."""
+    try:
+        r = requests.head(url, allow_redirects=True, timeout=5)
+        return r.url
+    except Exception:
+        return url
+
+
+def extract_asin(url: str) -> Optional[str]:
+    """Extracts ASIN from a full Amazon URL."""
+    match = re.search(r'/dp/([A-Z0-9]{10})', url)
     return match.group(1) if match else None
+
+
+def extract_name_from_url(url: str) -> str:
+    """
+    Extracts a clean product name from an Amazon URL path.
+    e.g. https://amazon.ca/YMDK-Keyset-Profile-Keyboard/dp/B079...
+         → "YMDK Keyset Profile Keyboard"
+    """
+    try:
+        path = urlparse(url).path
+        parts = path.split("/")
+        for i, part in enumerate(parts):
+            if part == "dp":
+                # Product name slug is the segment before /dp/
+                name_slug = parts[i - 1] if i > 0 else ""
+                if name_slug:
+                    return name_slug.replace("-", " ").strip()
+    except Exception:
+        pass
+    return url
 
 
 @app.post("/search")
@@ -70,7 +94,23 @@ async def search(req: SearchRequest):
 
     region = req.region.upper()
     domain = REGION_DOMAINS.get(region, "amazon.com")
-    asin_hint = extract_asin(req.query)
+    query = req.query
+
+    # Resolve shortened URLs (amzn.to etc.) to full URLs first
+    if "amzn.to" in query or "amzn.com/d" in query:
+        print(f"[URL] Resolving shortened URL: {query}")
+        query = resolve_url(query)
+        print(f"[URL] Resolved to: {query}")
+
+    # Extract ASIN from URL before converting to name
+    asin_hint = extract_asin(query) if query.startswith("http") else None
+
+    # Convert URL to clean product name for the AI prompt
+    # Makes URL input behave exactly like a keyword search
+    if query.startswith("http"):
+        product_name = extract_name_from_url(query)
+        print(f"[URL] Extracted product name: '{product_name}'")
+        query = product_name
 
     # What the user actually wants — used for trimming after fetch
     requested_counts = {
@@ -80,8 +120,8 @@ async def search(req: SearchRequest):
         "next-gen": req.count_next_gen,
     }
 
-    # Ask the AI for more candidates than needed so dropouts (no price,
-    # out of stock, group buys) don't leave the user with empty slots
+    # Ask AI for more candidates than needed so dropouts don't
+    # leave the user with empty slots
     padded_counts = {
         k: v * PADDING_MULTIPLIER for k, v in requested_counts.items() if v > 0
     }
@@ -94,15 +134,13 @@ async def search(req: SearchRequest):
         )
 
     try:
-        # Generate substitutes with padded counts
         base_data = generate_substitutes(
-            req.query,
+            query,
             asin_hint=asin_hint,
             tier_counts=padded_counts,
             budget_range=budget_range
         )
 
-        # Fetch real prices + re-tier + trim to requested counts
         result = await enhance_substitutes_async(
             base_data,
             domain=domain,
