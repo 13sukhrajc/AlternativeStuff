@@ -1,15 +1,21 @@
-import httpx
+# walmart/search_async.py
 
-WALMART_API_KEY = "YOUR_WALMART_API_KEY"
+import os
+from dotenv import load_dotenv
 
-async def walmart_search_async(client, query):
-    url = "https://developer.api.walmart.com/api-proxy/service/affil/product/v2/search"
+load_dotenv()
+
+WALMART_API_KEY = os.getenv("WALMART_API_KEY")
+BASE_URL = "https://developer.api.walmart.com/api-proxy/service/affil/product/v2/search"
+
+
+async def walmart_search_async(client, query: str) -> str | None:
     params = {
         "query": query,
         "apiKey": WALMART_API_KEY
     }
 
-    r = await client.get(url, params=params)
+    r = await client.get(BASE_URL, params=params)
     r.raise_for_status()
     data = r.json()
 
@@ -17,4 +23,4 @@ async def walmart_search_async(client, query):
     if not items:
         return None
 
-    return items[0]["itemId"]
+    return str(items[0]["itemId"])

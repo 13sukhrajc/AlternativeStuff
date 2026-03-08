@@ -1,7 +1,15 @@
-import httpx
-from .client import BASE_URL, API_KEY
+# rainforest/search_async.py
+#
+# Searches Amazon via Rainforest API and returns the top ASIN for a query.
 
-async def get_asin_from_title_async(client, title, domain="amazon.com"):
+from rainforest.client import BASE_URL, API_KEY
+
+
+async def get_asin_from_title_async(client, title: str, domain: str = "amazon.com") -> str | None:
+    """
+    Searches Amazon for the given title and returns the first result's ASIN.
+    Returns None if no results found.
+    """
     params = {
         "type": "search",
         "amazon_domain": domain,

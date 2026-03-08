@@ -1,0 +1,578 @@
+{
+    "query": "https://www.amazon.ca/Corsair-Vengeance-a8200-Gaming-Dominator/dp/B0FB9PBL4X/ref=mp_s_a_1_7?crid=36NZRUPGWYZ2N&dib=eyJ2IjoiMSJ9.60Cq7B6epq0sX5O0YSl6gpnHqHHnwauj-0_AjWOT5qkph4oUoXc8fZUs87FfEO_boJ6_xpoeAtBlyDknOYboulM2JllOrdkYjRYBWi846glCL88th7cu7ZFpsF9LA9knOJMjOEukG7h0DLhu2JyxBrEEiA9W0sr_maSwutNToD50Nr2PdKYrm1qFxxv3czXrWK4NxxmVSifUxo_a-gbRSA.GEAmBGQuLPxmXIw1Glazhjhst8ZJwNg2OO_r6vtoJ4I&dib_tag=se&keywords=5090+pc&qid=1772668743&sprefix=5090+%2Caps%2C188&sr=8-7",
+    "category": "technology",
+    "products": [
+        {
+            "title": "Corsair Vengeance a8200 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81MriRRXQAL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "original",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0FB9PBL4X",
+                    "price": 13630.18,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81MriRRXQAL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0FB9PBL4X/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "NZXT BLD Flow RGB Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/61vwdi1Yu3L._AC_SL1000_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "budget",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0D2MJT1FY",
+                    "price": 169.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/61vwdi1Yu3L._AC_SL1000_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0D2MJT1FY/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "ABS Stratos Aqua Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71lBkVBhX9L._AC_SL1200_.jpg",
+                "variant": "FRNT"
+            },
+            "tier": "budget",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0FDK18D5W",
+                    "price": 2036.45,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71lBkVBhX9L._AC_SL1200_.jpg",
+                        "variant": "FRNT"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0FDK18D5W/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Skytech Prism II Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/61tZNlp4M2L._AC_SL1000_.jpg",
+                "variant": "PT09"
+            },
+            "tier": "budget",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0C8BZ5P6K",
+                    "price": 3414.69,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/61tZNlp4M2L._AC_SL1000_.jpg",
+                        "variant": "PT09"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0C8BZ5P6K/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "iBuyPower TraceMesh Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/61vSLTJDoRL._AC_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "budget",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0D67LGWCZ",
+                    "price": 3490.5,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/61vSLTJDoRL._AC_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0D67LGWCZ/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "CLX SET Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71sZQnp893L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "budget",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0DVCHZTTL",
+                    "price": 6119.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71sZQnp893L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0DVCHZTTL/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "ASUS ROG Strix G16 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/712XgBlUsiL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0FW9ZL74L",
+                    "price": 129.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/712XgBlUsiL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0FW9ZL74L/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "MSI Infinite X Plus Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81s6mDgAx2L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0CWPWRFGX",
+                    "price": 1349.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81s6mDgAx2L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0CWPWRFGX/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Alienware Aurora R16 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71yCT9kcVfL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0F9MRQ328",
+                    "price": 2590.43,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71yCT9kcVfL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0F9MRQ328/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "HP OMEN 45L Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/61mOA1N9LML._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0F12DDZN2",
+                    "price": 826.88,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/61mOA1N9LML._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0F12DDZN2/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Lenovo Legion Tower 7i Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71HZsqIQmGL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0GL1Y1KZ9",
+                    "price": 3039.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71HZsqIQmGL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0GL1Y1KZ9/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Corsair Graphite 780T Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81vI6C6rf8L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0D156HPXX",
+                    "price": 4999.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81vI6C6rf8L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0D156HPXX/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Thermaltake Level 20 HT Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/91R4PeFOM7L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0837KQFCN",
+                    "price": 241.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/91R4PeFOM7L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0837KQFCN/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Phanteks Eclipse P600S Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81CsJyMiBfL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0G6B3MWHJ",
+                    "price": 231.45,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81CsJyMiBfL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0G6B3MWHJ/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Lian Li Lancool 3 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/815R9jWu5eL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0BN3SY5XW",
+                    "price": null,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/815R9jWu5eL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0BN3SY5XW/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "BeQuiet Dark Base 901 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71+ugOvrWQL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "mid",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0CWH71LQF",
+                    "price": 429.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71+ugOvrWQL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0CWH71LQF/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "MSI MPG Trident X2 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/61vWWeqdkpL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0DTPS38NG",
+                    "price": 4116.88,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/61vWWeqdkpL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0DTPS38NG/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Alienware Aurora R17 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71I7FIIqH+L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0DPKLJ4CV",
+                    "price": 3170.52,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71I7FIIqH+L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0DPKLJ4CV/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "ASUS ROG Strix GT16 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81X6zl2aguL._AC_SL1500_.jpg",
+                "variant": "FRNT"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0CS4B9QZ1",
+                    "price": 1679.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81X6zl2aguL._AC_SL1500_.jpg",
+                        "variant": "FRNT"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0CS4B9QZ1/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Corsair One i200 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81vI6C6rf8L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0D156HPXX",
+                    "price": 4999.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81vI6C6rf8L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0D156HPXX/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "HP OMEN 55L Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/81+jQ5yArGL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0FC4KBJV2",
+                    "price": 2973.21,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/81+jQ5yArGL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0FC4KBJV2/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Acer Predator Orion 7000 Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71JJYaWhhkL._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0CPKN2V5N",
+                    "price": 9034.23,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71JJYaWhhkL._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0CPKN2V5N/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Razer Tomahawk Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/918UvoZcm-L._AC_SL1500_.jpg",
+                "variant": "PT01"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0FH5T25M2",
+                    "price": 144.99,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/918UvoZcm-L._AC_SL1500_.jpg",
+                        "variant": "PT01"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0FH5T25M2/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Skytech Shiva II Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/613oh3lBrTL._AC_SL1000_.jpg",
+                "variant": "FRNT"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0B52WGJRR",
+                    "price": 1387.65,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/613oh3lBrTL._AC_SL1000_.jpg",
+                        "variant": "FRNT"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0B52WGJRR/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Origin PC Chronos Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/812JZzW9sDL._AC_SL1500_.jpg",
+                "variant": "FRNT"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0F8Q53BRZ",
+                    "price": 1387.65,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/812JZzW9sDL._AC_SL1500_.jpg",
+                        "variant": "FRNT"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0F8Q53BRZ/?tag=buybuzzyt-20"
+                }
+            ]
+        },
+        {
+            "title": "Maingear Sienna X Gaming PC",
+            "image": {
+                "link": "https://m.media-amazon.com/images/I/71hV66AVfSL._AC_SL1200_.jpg",
+                "variant": "FRNT"
+            },
+            "tier": "premium",
+            "category": "technology",
+            "merchants": [
+                {
+                    "merchant": "Amazon",
+                    "id": "B0DVD15367",
+                    "price": 2157.78,
+                    "stock": null,
+                    "image": {
+                        "link": "https://m.media-amazon.com/images/I/71hV66AVfSL._AC_SL1200_.jpg",
+                        "variant": "FRNT"
+                    },
+                    "affiliate_link": "https://amazon.ca/dp/B0DVD15367/?tag=buybuzzyt-20"
+                }
+            ]
+        }
+    ]
+}

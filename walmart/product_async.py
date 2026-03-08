@@ -1,14 +1,24 @@
-import httpx
+# walmart/product_async.py
 
-WALMART_API_KEY = "YOUR_WALMART_API_KEY"
+import os
+from dotenv import load_dotenv
 
-async def walmart_product_async(client, item_id):
-    url = f"https://developer.api.walmart.com/api-proxy/service/affil/product/v2/items/{item_id}"
+load_dotenv()
+
+WALMART_API_KEY = os.getenv("WALMART_API_KEY")
+BASE_URL = "https://developer.api.walmart.com/api-proxy/service/affil/product/v2/items"
+
+
+async def walmart_product_async(client, item_id: str) -> dict | None:
+    url = f"{BASE_URL}/{item_id}"
     params = {"apiKey": WALMART_API_KEY}
 
     r = await client.get(url, params=params)
     r.raise_for_status()
     data = r.json()
+
+    if not data:
+        return None
 
     return {
         "merchant": "Walmart",
@@ -17,5 +27,5 @@ async def walmart_product_async(client, item_id):
         "price": data.get("salePrice"),
         "stock": data.get("stock"),
         "image": data.get("largeImage"),
-        "affiliate_link": f"https://www.walmart.com/ip/{item_id}?affp1=YOUR_TAG"
+        "affiliate_link": None  # Set by utils/affiliate.py in enhancer
     }

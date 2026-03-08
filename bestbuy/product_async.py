@@ -1,14 +1,24 @@
-import httpx
+# bestbuy/product_async.py
 
-BESTBUY_API_KEY = "YOUR_BESTBUY_API_KEY"
+import os
+from dotenv import load_dotenv
 
-async def bestbuy_product_async(client, sku):
-    url = f"https://api.bestbuy.com/v1/products/{sku}.json"
+load_dotenv()
+
+BESTBUY_API_KEY = os.getenv("BESTBUY_API_KEY")
+BASE_URL = "https://api.bestbuy.com/v1/products"
+
+
+async def bestbuy_product_async(client, sku: str) -> dict | None:
+    url = f"{BASE_URL}/{sku}.json"
     params = {"apiKey": BESTBUY_API_KEY}
 
     r = await client.get(url, params=params)
     r.raise_for_status()
     data = r.json()
+
+    if not data:
+        return None
 
     return {
         "merchant": "Best Buy",
@@ -17,5 +27,5 @@ async def bestbuy_product_async(client, sku):
         "price": data.get("salePrice"),
         "stock": data.get("onlineAvailability"),
         "image": data.get("image"),
-        "affiliate_link": f"https://www.bestbuy.com/site/{sku}.p?skuId={sku}&ref=YOUR_IMPACT_ID"
+        "affiliate_link": None  # Set by utils/affiliate.py in enhancer
     }
